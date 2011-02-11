@@ -7,6 +7,9 @@ gem 'paperclip'
 
 gem 'compass'
 
+gem 'devise'
+gem 'cancan'
+
 group :development do
   gem 'annotate'
 end
