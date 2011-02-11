@@ -1,9 +1,9 @@
 <div id="header">
-	<% if signed_in? %>
+	<% if user_signed_in? %>
 	<div class="user_welcome">
 		<p>
 			Hello, <%= current_user.name %>!<br />
-			<%= link_to 'Settings', edit_user_path(current_user) %> | <%= link_to 'Sign out', signout_path %>
+			<%= link_to 'Settings', edit_user_registration_path(current_user) %> | <%= link_to 'Sign out', destroy_user_session_path %>
 		</p>
 	</div>
 	<% end %>

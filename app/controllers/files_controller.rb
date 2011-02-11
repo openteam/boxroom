@@ -1,12 +1,4 @@
 class FilesController < ApplicationController
-  before_filter :require_existing_file, :only => [:show, :edit, :update, :destroy]
-  before_filter :require_existing_parent_folder, :only => [:new, :create]
-
-  before_filter :require_create_permission, :only => [:new, :create]
-  before_filter :require_read_permission, :only => :show
-  before_filter :require_update_permission, :only => [:edit, :update]
-  before_filter :require_delete_permission, :only => :destroy
-
   # GET /files/:id
   # Note: @file and @folder are set in require_existing_file
   def show
@@ -51,15 +43,6 @@ class FilesController < ApplicationController
   def destroy
     @file.destroy
     redirect_to folder_url(@folder)
-  end
-
-  private
-
-  def require_existing_file
-    @file = UserFile.find(params[:id])
-    @folder = @file.folder
-  rescue ActiveRecord::RecordNotFound
-    redirect_to folder_url(Folder.root), :alert =>'Someone else deleted this file. Your action was cancelled.'
   end
 end
 
