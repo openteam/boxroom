@@ -4,6 +4,7 @@ db/*.sqlite3
 log/*
 uploads/*
 tmp/*
+*.swp
 
 public/stylesheets/*.css
 
